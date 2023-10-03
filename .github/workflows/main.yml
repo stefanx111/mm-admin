@@ -78,7 +78,7 @@ jobs:
       - name: Build
         shell: bash
         run: |
-          cd project && mkdir build && cd build
+          cd project && mkdir build-linux && cd build-linux
           python ../configure.py --enable-optimize --plugin-name=main --plugin-alias=main --sdks=cs2 --targets=x86_64
           ambuild
 
@@ -86,7 +86,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: ${{ runner.os }}
-          path: project/build/package
+          path: project/build-linux/package
 
   release:
     name: Release
